@@ -104,11 +104,11 @@ class Tread(Comment):
         Comment.__init__(self)
         self.parent_id = self.ID
     def create_thread(self):
-        new_thread = dict(self.parent_id = {
+        new_thread = {self.parent_id = {
             "message":self.message,
             "timestamp":self.timestamp,
             "ID":self.ID
-        })
+        }}
         the_comment.append(new_thread)
 
 
