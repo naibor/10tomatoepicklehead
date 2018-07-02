@@ -14,6 +14,7 @@ the_other_comment = {'message':'helloagain','timestamp':'now-changethislateragai
 comment_list = [the_comment, the_other_comment]
 user_info = []
 
+
 def timestamp():
     ourtime = datetime.now()
     return ourtime
@@ -22,18 +23,34 @@ def create_id(list):
     id = len(list)+1
     return id
 
-
 class User:
-    def __init__(self,username,password):
-        self.username = username
-        self.password = password
-        self.timestamp = timestamp()
+    # def __init__(self, username, password):
+    #     self.username = username
+    #     self.password = password
+    #     self.timestamp = timestamp()
+
+    @staticmethod
+    def signup(username, password, moderator=False, admin=False):
+        user_details[username] = {"password": password, "moderator": moderator, "admin": admin}
+        user_info.append(user_details)
+        return {"txt": "User Registered"}
+
+    @staticmethod
+    def login(username, password):
+        if username in user_details:
+            if user_details[username]["password"] == password:
+                return {"txt": "Logged In"}
+            else:
+                return {"txt": "Invalid Password"}
+        else:
+            return {"txt": "Invalid Username"}
+
 
 class Moderator(User):
-
     def __init__(self,username,password):
         User.__init__(self,username,password)
         self.is_moderator = True
+
 
 class Admin(Moderator):
     def __init__(self, username, password):
@@ -56,15 +73,12 @@ class Admin(Moderator):
 
 
 class Comment:
-    def __init__(self,message):
+    def __init__(self, message):
         self.message = message
         self.timestamp = timestamp()
         self.ID = len(comment_list) + 1
-
-
-class Thread(Comment):
-
-
+  
+  
     @staticmethod
     def delete_comment(id):
         for comment in comment_list:
@@ -134,4 +148,11 @@ def edit_comment(commentID):
     current_message=comment_list[commentID]
     print(current_message['message'])
 
+
+user = User()
+user.signup("Antony Kavoo", "123", True, False)
+user.signup("Phillip", "456")
+print(user_details)
+print(user.login("Antony Kavoo", "123"))
+print(user_info)
 
