@@ -5,7 +5,6 @@ timestamp = 'null'
 ID = 'null'
 
 
-#comment_list = [{message:'hello',timestamp:'now-changethislater',ID:1},{message:'hello',timestamp:'now-changethislater',ID:2}]
 
 the_comment = {'message':'hello','timestamp':'now-changethislater','ID':'1'}
 the_other_comment = {'message':'helloagain','timestamp':'now-changethislateragain','ID':'2'}
@@ -13,6 +12,7 @@ the_other_comment = {'message':'helloagain','timestamp':'now-changethislateragai
 
 comment_list = [the_comment, the_other_comment]
 user_info = []
+user_details = {}
 
 
 def timestamp():
@@ -104,7 +104,7 @@ class Tread(Comment):
         Comment.__init__(self)
         self.parent_id = self.ID
     def create_thread(self):
-        new_thread = {self.parent_id = {
+        new_thread = {self.parent_id :{
             "message":self.message,
             "timestamp":self.timestamp,
             "ID":self.ID
