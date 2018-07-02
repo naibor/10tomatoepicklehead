@@ -7,7 +7,7 @@ user_details = {}
 
 def timestamp():
     ourtime = datetime.now()
-    ourtime=datetime.strptime(ourtime, '%d%b%Y')
+    # ourtime=datetime.strptime(ourtime, '%d%b%Y')
     return ourtime
 
 class User:
@@ -17,7 +17,7 @@ class User:
         self.timestamp = timestamp()
 
 class Moderator(User):
-    def __init__(self):
+    def __init__(self,username,password):
         User.__init__(self,username,password)
         self.is_moderator = True
 
@@ -33,9 +33,27 @@ class Comment:
         self.timestamp = timestamp()
         self.ID = len(comment_list) + 1
 
+    def create_comment(self):
+        new_comment = {
+            "message":self.message,
+            "timestamp":self.timestamp,
+            "ID":self.ID
+        }
+        the_comment = new_comment
+        comment_list.append(the_comment)
+        print (the_comment)
+        
+
 class Tread(Comment):
     def __init__(self):
         Comment.__init__(self)
         self.parent_id = self.ID
+    def create_thread(self):
+        new_thread = dict(self.parent_id = {
+            "message":self.message,
+            "timestamp":self.timestamp,
+            "ID":self.ID
+        })
+        the_comment.append(new_thread)
 
 
