@@ -1,3 +1,3 @@
-from model import editmycomment
+from model import edit_comment
 
-editmycomment(1)
+edit_comment(0)
