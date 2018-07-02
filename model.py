@@ -33,7 +33,7 @@ class Comment:
         self.timestamp = timestamp()
         self.ID = len(comment_list) + 1
 
-class Tread(Comment):
+class Thread(Comment):
     def __init__(self):
         Comment.__init__(self)
         self.parent_id = self.ID
