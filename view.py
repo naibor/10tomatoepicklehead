@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+from model import edit_comment
+
+edit_comment(0)
+=======
 from model import User, Comment, Tread
 # class User:
 #     print('Are you signed up?')
@@ -26,3 +31,4 @@ class comments:
 
 
     
+>>>>>>> develop

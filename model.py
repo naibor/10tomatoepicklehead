@@ -1,7 +1,17 @@
 from datetime import datetime
 
-comment_list = []
-the_comment = {}
+message = 'null'
+timestamp = 'null'
+ID = 'null'
+
+
+#comment_list = [{message:'hello',timestamp:'now-changethislater',ID:1},{message:'hello',timestamp:'now-changethislater',ID:2}]
+
+the_comment = {'message':'hello','timestamp':'now-changethislater','ID':'1'}
+the_other_comment = {'message':'helloagain','timestamp':'now-changethislateragain','ID':'2'}
+
+
+comment_list = [the_comment, the_other_comment]
 user_info = []
 
 def timestamp():
@@ -52,6 +62,9 @@ class Comment:
         self.ID = len(comment_list) + 1
 
 
+class Thread(Comment):
+
+
     @staticmethod
     def delete_comment(id):
         for comment in comment_list:
@@ -72,6 +85,7 @@ class Comment:
         
 
 class Tread(Comment):
+
     def __init__(self):
         Comment.__init__(self)
         self.parent_id = self.ID
@@ -85,5 +99,39 @@ class Tread(Comment):
 
 
 
+
+
+
+
+#Method to edit exisiting comments
+def edit_comment(commentID):
+
+    #Letting the user know what is about to be editted
+    message_dict = comment_list[commentID]
+    print('You are about to edit the post displayed below ')
+    print('--------------------------------')
+    
+    print(message_dict['message'])
+    print()
+    print()
+
+
+    #Let the user enter a new message to replace the old one
+    newmessage = input('Enter new message: ')
+    new_dict = {'message':newmessage,'timestamp':'now-changethislateragain','ID':'2'}
+    comment_list[commentID] = new_dict
+
+
+
+    #Display the new message to the user
+    print('The new edited message reads ')
+    print('--------------------------------')
+    print()
+    print()
+
+
+    #Confirming the new message is in the list of dicts
+    current_message=comment_list[commentID]
+    print(current_message['message'])
 
 
