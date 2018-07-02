@@ -3,12 +3,8 @@ from datetime import datetime
 message = 'null'
 timestamp = 'null'
 ID = 'null'
-
-
-
 the_comment = {'message':'hello','timestamp':'now-changethislater','ID':'1'}
 the_other_comment = {'message':'helloagain','timestamp':'now-changethislateragain','ID':'2'}
-
 
 comment_list = [the_comment, the_other_comment]
 user_info = []
@@ -24,27 +20,30 @@ def create_id(list):
     return id
 
 class User:
-    # def __init__(self, username, password):
-    #     self.username = username
-    #     self.password = password
-    #     self.timestamp = timestamp()
+    def __init__(self, username, password):
+        self.username = username
+        self.password = password
+        self.timestamp = timestamp()
 
-    @staticmethod
-    def signup(username, password, moderator=False, admin=False):
-        user_details[username] = {"password": password, "moderator": moderator, "admin": admin}
+    
+    def signup(self):
+        user_details = {"username":self.username, "password": self.password}
         user_info.append(user_details)
         return {"txt": "User Registered"}
 
-    @staticmethod
-    def login(username, password):
-        if username in user_details:
-            if user_details[username]["password"] == password:
-                return {"txt": "Logged In"}
+    def login(self):
+        for every_user in user_info:
+            if every_user["username"] == self.username:
+                if every_user["password"]== self.password:
+                    print("logged in successfully")
+                    return True
+                else:
+                    print("invalid password,consider refactoring")
+                    return False
             else:
-                return {"txt": "Invalid Password"}
-        else:
-            return {"txt": "Invalid Username"}
-
+                print("invalid username,consider signing up")
+                return {"txt": "Username does not exist"}
+        
 
 class Moderator(User):
     def __init__(self,username,password):
@@ -68,7 +67,7 @@ class Admin(Moderator):
     def assign_admin(username):
         for user in user_info:
             if user["name"] == username:
-                admin = Moderator(user.username,user.password)
+                admin = Admin(user.username,user.password)
                 return admin
 
 
@@ -147,12 +146,3 @@ def edit_comment(commentID):
     #Confirming the new message is in the list of dicts
     current_message=comment_list[commentID]
     print(current_message['message'])
-
-
-user = User()
-user.signup("Antony Kavoo", "123", True, False)
-user.signup("Phillip", "456")
-print(user_details)
-print(user.login("Antony Kavoo", "123"))
-print(user_info)
-

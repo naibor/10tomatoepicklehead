@@ -1,4 +1,5 @@
-from model import User, Admin, Moderator, Comment, Tread
+from model import User, Admin, Moderator, Comment, Tread, user_info
+
 
 
 
@@ -19,18 +20,25 @@ def comments():
         new_comment.delete_comment()
 
 class User:
-    print('Are you signed up?')
+    print('New user?')
     signup = input('Select Yes or No:')
     if signup == 'No':
         username = input('enter username:')
         password = input('enter password:')
         new_user = User(username,password)
         is_sign_up = new_user.signup()
-        
-    else:
+        print('You have signed up')
         username = input('enter username:')
         password = input('enter password:')
-        new_user.login(username,password)
-        if is_login["txt"] == "Logged In":
+
+        logged_in = new_user.login()
+        if logged_in:
+                comments()
+    else:
+        """user login"""
+        username = input('enter username:')
+        password = input('enter password:')
+        login = new_user.login()
+        if login:
             comments()
     
