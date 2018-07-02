@@ -1,6 +1,6 @@
 from datetime import datetime
 
-comment_list = []
+comment_list = [{message:'hello',timestamp:'now-changethislater',ID:1}]
 the_comment = {}
 user_info = []
 user_details = {}
@@ -37,5 +37,12 @@ class Thread(Comment):
     def __init__(self):
         Comment.__init__(self)
         self.parent_id = self.ID
+
+
+def editmycomment(commentID):
+    oldmessage = comment_list[commentID]
+    print('Enter new message')
+    newmessage = input('Enter new message')
+    
 
 
