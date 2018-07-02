@@ -17,7 +17,7 @@ class User:
         self.timestamp = timestamp()
 
 class Moderator(User):
-    def __init__(self):
+    def __init__(self,username,password):
         User.__init__(self,username,password)
         self.is_moderator = True
 
@@ -32,6 +32,17 @@ class Comment:
         self.message = message
         self.timestamp = timestamp()
         self.ID = len(comment_list) + 1
+
+    def create_comment(self):
+        new_comment = {
+            "message":self.message,
+            "timestamp":self.timestamp,
+            "ID":self.ID
+        }
+        the_comment = new_comment
+        comment_list.append(the_comment)
+        return{"message":"your comment is created"},201
+        
 
 class Tread(Comment):
     def __init__(self):
