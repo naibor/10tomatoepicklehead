@@ -6,6 +6,16 @@ admin = Admin()
         print('select 2 to edit comment')
         print('selcet 3 to delete comment')
 
+from model import User, Comment, Tread
+# class User:
+#     print('Are you signed up?')
+#     signup = input('Select Yes or No:')
+#     if signup == No:
+#         new_user.signup()
+#     else:
+#         new_user.login()
+
+
         user_option = input('enter your option:')
 
         if user_option == '1':
@@ -32,9 +42,4 @@ class User:
         new_user.login(username,password)
         if is_login["txt"] == "Logged In":
             comments()
-    
-
-    
-
-
     
