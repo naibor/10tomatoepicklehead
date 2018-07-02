@@ -7,7 +7,7 @@ user_details = {}
 
 def timestamp():
     ourtime = datetime.now()
-    ourtime=datetime.strptime(ourtime, '%d%b%Y')
+    # ourtime=datetime.strptime(ourtime, '%d%b%Y')
     return ourtime
 
 class User:
@@ -41,12 +41,19 @@ class Comment:
         }
         the_comment = new_comment
         comment_list.append(the_comment)
-        return{"message":"your comment is created"},201
+        print (the_comment)
         
 
 class Tread(Comment):
     def __init__(self):
         Comment.__init__(self)
         self.parent_id = self.ID
+    def create_thread(self):
+        new_thread = dict(self.parent_id = {
+            "message":self.message,
+            "timestamp":self.timestamp,
+            "ID":self.ID
+        })
+        the_comment.append(new_thread)
 
 
