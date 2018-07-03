@@ -9,7 +9,7 @@ ID = 'null'
 
 the_comment = {'message':'hello','timestamp':'now-changethislater','ID':'1'}
 the_other_comment = {'message':'helloagain','timestamp':'now-changethislateragain','ID':'2'}
-
+the_third_comment = {'message':'hello','timestamp':'now-changethislater','ID':'0'}
 
 comment_list = [the_comment, the_other_comment]
 user_info = []
@@ -84,18 +84,18 @@ class Thread(Comment):
 
         
 
-class Tread(Comment):
+# class Tread(Comment):
 
-    def __init__(self):
-        Comment.__init__(self)
-        self.parent_id = self.ID
-    def create_thread(self):
-        new_thread = dict(self.parent_id = {
-            "message":self.message,
-            "timestamp":self.timestamp,
-            "ID":self.ID
-        })
-        the_comment.append(new_thread)
+#     def __init__(self):
+#         Comment.__init__(self)
+#         self.parent_id = self.ID
+#     def create_thread(self):
+#         new_thread = dict(self.parent_id = {
+#             "message":self.message,
+#             "timestamp":self.timestamp,
+#             "ID":self.ID
+#         })
+#         the_comment.append(new_thread)
 
 
 
@@ -107,11 +107,18 @@ class Tread(Comment):
 def edit_comment(commentID):
 
     #Letting the user know what is about to be editted
-    message_dict = comment_list[commentID]
+    matches = [d for d in comment_list if d['ID'] == str(commentID)]
+    #print(matches[0])
+    temp_message_dict = matches[0]
+    print(temp_message_dict['message'])
+    message_index = next((index for (index, d) in enumerate(comment_list) if d["ID"] == str(commentID) ), None)
+
+
+    #message_dict = comment_list[commentID]
     print('You are about to edit the post displayed below ')
     print('--------------------------------')
     
-    print(message_dict['message'])
+    print(temp_message_dict['message'])
     print()
     print()
 
@@ -119,7 +126,7 @@ def edit_comment(commentID):
     #Let the user enter a new message to replace the old one
     newmessage = input('Enter new message: ')
     new_dict = {'message':newmessage,'timestamp':'now-changethislateragain','ID':'2'}
-    comment_list[commentID] = new_dict
+    comment_list[message_index] = new_dict
 
 
 
@@ -131,7 +138,7 @@ def edit_comment(commentID):
 
 
     #Confirming the new message is in the list of dicts
-    current_message=comment_list[commentID]
+    current_message=comment_list[message_index]
     print(current_message['message'])
 
 

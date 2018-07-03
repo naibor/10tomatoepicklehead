@@ -1,9 +1,8 @@
-<<<<<<< HEAD
 from model import edit_comment
 
-edit_comment(0)
-=======
-from model import User, Comment, Tread
+edit_comment(2)
+
+from model import User, Comment, Thread
 # class User:
 #     print('Are you signed up?')
 #     signup = input('Select Yes or No:')
@@ -30,5 +29,3 @@ class comments:
         new_comment.delete_comment()
 
 
-    
->>>>>>> develop
