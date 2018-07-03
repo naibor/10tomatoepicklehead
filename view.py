@@ -1,18 +1,6 @@
-from model import edit_comment
+from model import User, Admin, Moderator, Comment, Tread
 
-edit_comment(2)
-
-from model import User, Comment, Thread
-# class User:
-#     print('Are you signed up?')
-#     signup = input('Select Yes or No:')
-#     if signup == No:
-#         new_user.signup()
-#     else:
-#         new_user.login()
-    
-
-class comments:
+def comments():
     print('select 1 to post comment')
     print('select 2 to edit comment')
     print('selcet 3 to delete comment')
@@ -28,4 +16,19 @@ class comments:
     elif user_option == '3':
         new_comment.delete_comment()
 
-
+class User:
+    print('Are you signed up?')
+    signup = input('Select Yes or No:')
+    if signup == 'No':
+        username = input('enter username:')
+        password = input('enter password:')
+        new_user = User(username,password)
+        is_sign_up = new_user.signup()
+        
+    else:
+        username = input('enter username:')
+        password = input('enter password:')
+        new_user.login(username,password)
+        if is_login["txt"] == "Logged In":
+            comments()
+    
